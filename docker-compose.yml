@@ -1,0 +1,9 @@
+version: '2'
+services:
+  edr-graphql:
+    build: ./build
+    ports:
+      - 85:80
+    command: sh -c "npm install && npm start"
+    volumes:
+      - .:/src
