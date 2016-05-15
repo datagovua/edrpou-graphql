@@ -40,6 +40,7 @@ const QueryType = new GraphQLObjectType({
       resolve: (root, args) => {
         let where = {};
         let pagination = "";
+        let sort = "&sort=edrpou"
         if(args.searchByName) {
           where.or = [{
             officialName: { contains: encodeURIComponent(args.searchByName) }
@@ -51,12 +52,13 @@ const QueryType = new GraphQLObjectType({
           let edrpou = edrpouToString(args.searchByEdrpou);
           console.log(edrpou)
           where.edrpou = encodeURIComponent(edrpou);
+          sort = "";
         }
         if(args.first != undefined && args.after != undefined) {
           pagination = `&skip=${args.after}&limit=${args.first}`;
         }
         where = JSON.stringify(where);
-        return fetch(`${BASE_URL}/companies?where=${where}&sort=edrpou${pagination}`)
+        return fetch(`${BASE_URL}/companies?where=${where}${sort}${pagination}`)
         .then(res => res.json());
       }
     }
