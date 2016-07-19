@@ -82,6 +82,8 @@ const QueryType = new GraphQLObjectType({
           let edrpou = edrpouToString(args.searchByEdrpou);
           where.edrpou = encodeURIComponent(edrpou);
           sort = "";
+        } else {
+          where.edrpou = {"not": ""};
         }
         if(args.first) {
           pagination = `&limit=${args.first}`;
