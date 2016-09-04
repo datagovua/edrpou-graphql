@@ -20,6 +20,7 @@ import {
 import fetch from 'node-fetch';
 
 const API_URL = process.env.API_URL;
+console.log(`API_URL: ${API_URL}`);
 
 const { nodeInterface, nodeField } = nodeDefinitions(
   globalId => {
