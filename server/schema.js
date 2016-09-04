@@ -120,6 +120,7 @@ const fetchCompanyById = (id) => {
 };
 
 const fetchByUrl = (url) => {
+ console.log(`Fetching ${url}`);
  return fetch(`${API_URL}/${url}`)
         .then(res => res.json());
 
