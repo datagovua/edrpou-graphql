@@ -7,7 +7,7 @@ import schema from './schema';
 
 const app = express();
 
-var formatError => {
+const formatError = (error) => {
   var err = {
     message: error.message,
     locations: error.locations,
@@ -16,7 +16,7 @@ var formatError => {
   console.log(JSON.stringify(err));
   delete err.stack;
   return err;
-}
+};
 
 app.use('/', cors(), graphQLHTTP({
   schema,
