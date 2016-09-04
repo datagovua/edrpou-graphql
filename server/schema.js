@@ -120,10 +120,16 @@ const fetchCompanyById = (id) => {
 };
 
 const fetchByUrl = (url) => {
- console.log(`Fetching ${url}`);
- return fetch(`${API_URL}/${url}`)
-        .then(res => res.json());
-
+ console.log(`Fetching ${API_URL}${url}`);
+ return fetch(`${API_URL}${url}`)
+        .then(res => {
+          try {
+            return res.clone().json();
+          } catch(e) {
+            console.error(`Can not parse response: ${err}\n${res.text()}`);
+            throw e;
+          }
+        });
 };
 
 const edrpouToString = (id) => {
