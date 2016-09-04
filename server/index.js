@@ -20,7 +20,7 @@ const formatError = (error) => {
 
 app.use('/', cors(), graphQLHTTP({
   schema,
-  graphiql: true
+  graphiql: true,
   formatError
 }));
 
