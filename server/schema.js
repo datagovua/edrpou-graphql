@@ -19,7 +19,7 @@ import {
 
 import fetch from 'node-fetch';
 
-const BASE_URL = 'http://edr.data-gov-ua.org/api';
+const API_URL = process.env.API_URL;
 
 const { nodeInterface, nodeField } = nodeDefinitions(
   globalId => {
@@ -119,7 +119,7 @@ const fetchCompanyById = (id) => {
 };
 
 const fetchByUrl = (url) => {
- return fetch(`${BASE_URL}/${url}`)
+ return fetch(`${API_URL}/${url}`)
         .then(res => res.json());
 
 };

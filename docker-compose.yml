@@ -5,5 +5,7 @@ services:
     ports:
       - 85:80
     command: sh -c "npm install && npm start"
+    environment:
+      API_URL: "http://edr.data-gov-ua.org/api"
     volumes:
       - .:/src
