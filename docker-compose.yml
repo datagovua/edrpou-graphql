@@ -7,5 +7,6 @@ services:
     command: sh -c "npm install && npm start"
     environment:
       API_URL: "http://edr.data-gov-ua.org/api"
+      ELASTIC_URL: "http://edr.data-gov-ua.org:9200"
     volumes:
       - .:/src
