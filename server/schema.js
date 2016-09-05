@@ -132,15 +132,19 @@ const QueryType = new GraphQLObjectType({
         fullText: { type: GraphQLString },
       },
       resolve: (root, args) => {
-        const query = encodeURIComponent(esSanitize(args.fullText).replace(new RegExp('\\\\ ', 'g'), " ") + "*");
-        return fetchElastic(`/companies_index/_search?q=${query}&sort=_score,edrpou:asc&size=100`)
-               .then(res => {
-                 if(!res.hits) throw new Error("Elastic search error");
-                 return {
-                   results: res.hits.hits.map((hit) => hit._source),
-                   count: res.hits.total
-                 };
-               });
+        if(args.fullText) {
+          const query = encodeURIComponent(esSanitize(args.fullText).replace(new RegExp('\\\\ ', 'g'), " ") + "*");
+          return fetchElastic(`/companies_index/_search?q=${query}&sort=_score,edrpou:asc&size=100`)
+                 .then(res => {
+                   if(!res.hits) throw new Error("Elastic search error");
+                   return {
+                     results: res.hits.hits.map((hit) => hit._source),
+                     count: res.hits.total
+                   };
+                 });
+        } else {
+          throw new Error("No search query provided");
+        }
       }
     }
   })
