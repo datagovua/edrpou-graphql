@@ -1,4 +1,4 @@
-FROM node:4.4.3-slim
+FROM node:4.7.3-alpine
 
 COPY . /src
 WORKDIR /src
