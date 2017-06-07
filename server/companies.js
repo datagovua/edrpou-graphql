@@ -34,7 +34,7 @@ const { nodeInterface, nodeField } = nodeDefinitions(
   },
 );
 
-const CompanyType = new GraphQLObjectType({
+export const CompanyType = new GraphQLObjectType({
   name: 'Company',
   description: '...',
   fields: () => ({

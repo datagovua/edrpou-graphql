@@ -4,6 +4,7 @@ import {
 } from 'graphql';
 
 import { CompaniesQuery, SearchCompaniesQuery } from './companies';
+import { TreasuryQuery } from './treasury';
 
 const QueryType = new GraphQLObjectType({
   name: 'Query',
@@ -12,7 +13,8 @@ const QueryType = new GraphQLObjectType({
   fields: () => ({
 //    node: nodeField, // not used?
     companies: CompaniesQuery,
-    searchCompanies: SearchCompaniesQuery
+    searchCompanies: SearchCompaniesQuery,
+    treasury: TreasuryQuery
   })
 });
 
