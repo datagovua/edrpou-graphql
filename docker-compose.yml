@@ -4,7 +4,7 @@ services:
     build: ./build
     ports:
       - 85:80
-    command: sh -c "npm install && npm start"
+    command: sh -c "yarn install && yarn start"
     environment:
       API_URL: "http://edr.data-gov-ua.org/api"
       ELASTIC_URL: "http://edr.data-gov-ua.org:9200"
